@@ -1,0 +1,17 @@
+.jumbotron {
+    height: 200px;
+    background: #eee;
+    text-align: center;
+    padding: 50px 0;
+}
+.jumbotron h1 {
+    line-height: 100px;
+}
+.jumbotron button {
+    width: 80px;
+    height: 30px;
+    background: #5cb85c;
+    border-color: #5cb85c;
+    border-radius: 5px;
+    color: #fff;
+}
