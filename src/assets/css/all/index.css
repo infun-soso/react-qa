@@ -1,17 +1,24 @@
-.jumbotron {
+.jumbotrons {
     height: 200px;
     background: #eee;
-    text-align: center;
     padding: 50px 0;
 }
-.jumbotron h1 {
-    line-height: 100px;
+.jumbotrons button {
+    margin-top: 60px;
 }
-.jumbotron button {
-    width: 80px;
-    height: 30px;
-    background: #5cb85c;
-    border-color: #5cb85c;
-    border-radius: 5px;
-    color: #fff;
+.container {
+    padding: 20px 250px !important;
+}
+.form-box {
+    padding-bottom: 20px; 
+}
+.vote-count{
+    display: block;
+    width: 14px;
+}
+.list-style li {
+    margin-top: 15px;
+}
+.cancelbtn{
+    margin-left: 15px;
 }

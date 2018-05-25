@@ -1,10 +1,11 @@
 import React from 'react'
 import './assets/css/all/index.css'
-import QuestionList from './QuestionList'
+import QuestionList from './container/QuestionList'
+import QuestionForm from './container/QuestionForm'
 
 function SubmitBtn(props) {
     return (
-        <button>添加问题</button>
+        <button className="btn btn-success" onClick={props.onToggleForm}>添加问题</button>
     )
 }
 
@@ -32,20 +33,70 @@ class QuestionMain extends React.Component {
         ]
         super()
         this.state = {
-            questions: list
+            questions: list,
+            formDisplay: false
         }
     }
+
+    componentWillMount() {
+        this.sortItem(this.state.questions)
+    }
+
+    onToggleForm() {
+        this.setState({
+            formDisplay:!this.state.formDisplay
+        })
+    }
+
+    addNewItem(obj) {
+        let olist = this.state.questions.slice()
+        let len = olist.length
+        let newItem = Object.assign({},{id: len + 1},obj)
+        olist.push(newItem)
+        this.setState({
+            questions: olist
+        })
+    }
+    onVote(id, count) {
+        let items = this.state.questions.slice()
+        items.map((item) => {
+            if( item.id === id ) {
+                item.voteCount = count
+            }
+            return false
+        })
+        items = this.sortItem(items)
+        this.setState({
+            questions: items
+        })
+    }
+
+    sortItem(q) {
+        q.sort((a, b) => {
+            return b.voteCount - a.voteCount
+        })
+        return q
+    }
+
     render() {
         return (
             <div className="main">
-                <div className="jumbotron">
+                <div className="jumbotrons text-center">
                     <h1>React问答</h1>
-                    <SubmitBtn />
+                    <SubmitBtn onToggleForm={this.onToggleForm.bind(this)}/>
                 </div>
                 <div className="container">
-                    <div className="question-form">1</div>
+                    <div className="question-form">
+                        <QuestionForm 
+                            onToggleForm={this.onToggleForm.bind(this)} 
+                            formDisplay={this.state.formDisplay}
+                            addNewItem={(obj) => this.addNewItem(obj)}
+                            />
+                    </div>
                     <div className="question-list">
-                        <QuestionList list={this.state.questions}/>
+                        <QuestionList 
+                            list={this.state.questions}
+                            onVote={(id, count) => {this.onVote(id, count)}}/>
                     </div>
                 </div>
             </div>

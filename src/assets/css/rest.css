@@ -33,7 +33,7 @@ textarea { overflow: auto; resize: none; -webkit-appearance:none; }
 table { border-collapse: collapse; border-spacing: 0; }
 td, th { padding: 0; }
 
-h1, h2, h3, h4, h5, h6, p, figure, form, blockquote { margin: 0; font-weight: normal;}
+h1, h2, h3, h4, h5, h6, p, figure, form, blockquote { margin: 0; }
 ul, ol, li, dl, dd,option { margin: 0; padding: 0; }
 ul, ol { list-style: none outside none; }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { color: #aaa; }
