@@ -42,7 +42,7 @@ class QuestionMain extends React.Component {
         this.sortItem(this.state.questions)
     }
 
-    onToggleForm() {
+    onToggleForm = () => {
         this.setState({
             formDisplay:!this.state.formDisplay
         })
@@ -83,12 +83,12 @@ class QuestionMain extends React.Component {
             <div className="main">
                 <div className="jumbotrons text-center">
                     <h1>React问答</h1>
-                    <SubmitBtn onToggleForm={this.onToggleForm.bind(this)}/>
+                    <SubmitBtn onToggleForm={this.onToggleForm}/>
                 </div>
                 <div className="container">
                     <div className="question-form">
                         <QuestionForm 
-                            onToggleForm={this.onToggleForm.bind(this)} 
+                            onToggleForm={this.onToggleForm} 
                             formDisplay={this.state.formDisplay}
                             addNewItem={(obj) => this.addNewItem(obj)}
                             />
